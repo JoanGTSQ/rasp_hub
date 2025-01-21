@@ -2,6 +2,7 @@ extends Control
 
 onready var performance_label = $PerformanceLabel
 onready var date_label = $DateLabel
+onready var system_button = $SystemButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,9 @@ func _process(delta):
 func _on_module_toggled(_params : Dictionary) -> void:
 	if _params.has("module") and _params.has("status"):
 		print(_params.module, " ", _params.status)
+		match _params.module:
+			"system":
+				system_button.visible = !_params.status
 
 
 func _on_system_button_pressed():
