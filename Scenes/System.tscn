@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/SystemManager.gd" type="Script" id=1]
 [ext_resource path="res://AnimationPlayer.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="System" type="Control"]
 anchor_right = 1.0
@@ -24,15 +26,6 @@ margin_bottom = 88.0
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 2 )]
 
-[node name="CpuLabel" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 64.0
-margin_right = 89.0
-margin_bottom = 95.0
-text = "CPU:"
-align = 1
-valign = 1
-
 [node name="OsLabelInfo" type="Label" parent="."]
 margin_top = 16.0
 margin_right = 512.0
@@ -41,7 +34,19 @@ text = "WELCOME TO"
 align = 1
 valign = 1
 
-[node name="CpuLabelInfo" type="Label" parent="."]
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_left = 290.0
+margin_top = 165.0
+margin_right = 470.0
+margin_bottom = 283.0
+
+[node name="Info" type="Panel" parent="."]
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 300.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="CpuLabelInfo" type="Label" parent="Info"]
 margin_left = 88.0
 margin_top = 64.0
 margin_right = 169.0
@@ -50,7 +55,7 @@ text = "EJEMPLO"
 align = 1
 valign = 1
 
-[node name="RamLabel" type="Label" parent="."]
+[node name="RamLabel" type="Label" parent="Info"]
 margin_left = 8.0
 margin_top = 112.0
 margin_right = 89.0
@@ -59,7 +64,7 @@ text = "RAM:"
 align = 1
 valign = 1
 
-[node name="RamLabelInfo" type="Label" parent="."]
+[node name="RamLabelInfo" type="Label" parent="Info"]
 margin_left = 88.0
 margin_top = 112.0
 margin_right = 169.0
@@ -68,12 +73,21 @@ text = "RAM:"
 align = 1
 valign = 1
 
-[node name="DiskLabel" type="Label" parent="."]
+[node name="DiskLabel" type="Label" parent="Info"]
 margin_left = 8.0
 margin_top = 168.0
 margin_right = 89.0
 margin_bottom = 199.0
 text = "DISK:"
+align = 1
+valign = 1
+
+[node name="CpuLabel" type="Label" parent="Info"]
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 89.0
+margin_bottom = 95.0
+text = "CPU:"
 align = 1
 valign = 1
 
