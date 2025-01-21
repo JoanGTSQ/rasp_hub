@@ -7,6 +7,7 @@ onready var system_button = $SystemButton
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ControlManager.connect("module_toggled", self, "_on_module_toggled")
+	ControlManager.emit_signal("reload_modules", {})
 
 
 func _process(delta):
