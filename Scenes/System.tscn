@@ -34,12 +34,6 @@ text = "WELCOME TO"
 align = 1
 valign = 1
 
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-margin_left = 290.0
-margin_top = 165.0
-margin_right = 470.0
-margin_bottom = 283.0
-
 [node name="Info" type="Panel" parent="."]
 margin_top = 48.0
 margin_right = 256.0
