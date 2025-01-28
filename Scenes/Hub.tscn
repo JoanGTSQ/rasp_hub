@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Hub.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/System.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Printer.tscn" type="PackedScene" id=3]
 
 [node name="Hub" type="Control"]
 anchor_right = 1.0
@@ -23,12 +24,12 @@ margin_right = 334.0
 margin_bottom = 191.0
 text = "SYSTEM"
 
-[node name="SecurityButton" type="Button" parent="."]
+[node name="PrinterButton" type="Button" parent="."]
 margin_left = 128.0
 margin_top = 416.0
 margin_right = 309.0
 margin_bottom = 533.0
-text = "SECURITY"
+text = "PRINTER"
 
 [node name="WeatherButton" type="Button" parent="."]
 margin_left = 776.0
@@ -46,15 +47,19 @@ disabled = true
 text = "SISTEMA"
 
 [node name="System" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 0.0
 margin_bottom = 0.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Printer" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 300.0
+margin_bottom = 0.0
+rect_scale = Vector2( 1e-05, 1e-05 )
 
 [node name="PerformanceLabel" type="Label" parent="."]
 margin_right = 40.0
@@ -69,5 +74,5 @@ margin_bottom = 17.0
 text = "00:00:00"
 
 [connection signal="pressed" from="SystemButton" to="." method="_on_system_button_pressed"]
-[connection signal="pressed" from="SecurityButton" to="." method="_on_security_button_pressed"]
+[connection signal="pressed" from="PrinterButton" to="." method="_on_printer_button_pressed"]
 [connection signal="pressed" from="WeatherButton" to="." method="_on_weather_button_pressed"]

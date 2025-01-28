@@ -1,8 +1,9 @@
 extends Control
 
-onready var performance_label = $PerformanceLabel
-onready var date_label = $DateLabel
-onready var system_button = $SystemButton
+onready var performance_label : Label = $PerformanceLabel
+onready var date_label : Label = $DateLabel
+onready var system_button : Button = $SystemButton
+onready var printer_button : Button = $PrinterButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,14 +30,16 @@ func _on_module_toggled(_params : Dictionary) -> void:
 		match _params.module:
 			"system":
 				system_button.visible = !_params.status
+			"printer":
+				printer_button.visible = !_params.status
 
 
 func _on_system_button_pressed():
 	ControlManager.emit_signal("toggle_module", {"module": "system", "status": true})
 
 
-func _on_security_button_pressed():
-	ControlManager.emit_signal("toggle_module", {"module": "security", "status": true})
+func _on_printer_button_pressed():
+	ControlManager.emit_signal("toggle_module", {"module": "printer", "status": true})
 
 
 func _on_weather_button_pressed():

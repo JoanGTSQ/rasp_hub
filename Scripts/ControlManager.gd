@@ -1,21 +1,31 @@
 extends Node
 
-export var MODULES : Dictionary = {"system": false, "weather": false, "security": false}
+export var MODULES : Dictionary = {"system": false, "printer": false, "security": false}
 
 signal module_toggled(_params)
 signal toggle_module(_params)
 signal reload_modules(_params)
+signal control_loaded(_params)
+signal control_load(_params)
+
 
 func _ready():
 	OS.center_window()
 	_load_configuration()
 	connect("toggle_module", self, "_on_toggle_module")
 	connect("reload_modules", self, "_on_reload_modules")
+	connect("control_load", self, "_on_control_load")
+
+
+func _on_control_load(_params) -> void:
+	_on_reload_modules(_params)
+	emit_signal("control_loaded", {})
 
 
 func _on_reload_modules(_params : Dictionary) -> void:
 	for module in MODULES:
 		emit_signal("module_toggled", {"module": module, "status": MODULES[module]})
+
 
 func _on_toggle_module(_params : Dictionary) -> void:
 	if _params.has("module") and _params.has("status"):
